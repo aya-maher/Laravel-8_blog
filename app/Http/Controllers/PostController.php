@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePostRequest;
 class PostController extends Controller
 {
    
@@ -34,7 +35,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(Request $myRequestObject)
+    public function store(StorePostRequest $myRequestObject)
     {
         $data = $myRequestObject->all();
         Post::create($data);
