@@ -10,6 +10,7 @@
             <th scope="col">#</th>
             <th scope="col">title</th>
             <th scope="col">posted by</th>
+            <th scope="col">slug</th>
             <th scope="col">created at</th>
             <th scope="col">actions</th>
           </tr>
@@ -20,6 +21,7 @@
             <th scope="row">{{$post['id']}}</th>
             <td>{{$post['title']}}</td>
             <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
+            <td>{{$post['slug']}}</td>
             <td>{{$post->created_at_formated}}</td>
             <td class="col">
                 <a href="{{ route('posts.show', [ 'post' => $post['id'] ]) }}" class="btn btn-info">View</a>

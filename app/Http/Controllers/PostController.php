@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 class PostController extends Controller
 {
    
@@ -39,6 +41,9 @@ class PostController extends Controller
     {
         $data = $myRequestObject->all();
         Post::create($data);
+        $post = new Post();
+        $post->name = $myRequestObject->title;
+        $post->slug = SlugService::createSlug(Post::class, 'slug', $myRequestObject->title);
         return redirect()->route('posts.index');
     }
 
